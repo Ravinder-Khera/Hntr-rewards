@@ -1,4 +1,4 @@
-import logo from '../assets/logo.png';
+import logo from '../../assets/logo.png';
 import React, { useState } from 'react';
 import Popup from './popup';
 
@@ -12,9 +12,10 @@ import {
   NavbarBrand,
   Nav,
   NavItem,
-  Button,
-  NavLink,
+  Button
 } from 'reactstrap';
+
+import { Link } from 'react-router-dom';
 
 
 
@@ -115,13 +116,9 @@ export default function Headerbar() {
                     <Nav className="ml-auto" navbar>
                     <div className='home-menu-nav'>
                             <NavItem className='home-menu'>
-                                <NavLink href="#">
-                                  Home
-                                </NavLink>
-                            
-                                <NavLink href="#">
-                                    Menu
-                                </NavLink>
+                                
+                                <Link to="/" className='nav-link'> Home</Link>
+                                <Link to="/menu" className='nav-link'> Menu</Link>
                             </NavItem>
                 </div>
                     

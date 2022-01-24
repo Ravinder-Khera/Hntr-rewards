@@ -1,0 +1,22 @@
+.harvest-icon{
+    width: 65px;
+}
+
+.card-icon{
+    padding: 1rem;
+}
+
+.pools-card {
+    padding: 1rem 1rem;
+    border-bottom: 0.5px solid gray;
+    display: grid;
+    border: none;
+  }
+
+  .input-group-text{
+      border-left: none !important;
+  }
+
+  .form-control{
+      border-right: none !important;
+  }
