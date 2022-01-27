@@ -84,7 +84,7 @@ export default function Headerbar() {
                               <Button
                                   color="light"
                                   className='nav-btn'
-                                  onClick={connect}
+                                  onClick={() => authenticate({ connect })}
                                   >
                                   Meta Mask
                               </Button>
@@ -119,6 +119,7 @@ export default function Headerbar() {
                                 
                                 <Link to="/" className='nav-link'> Home</Link>
                                 <Link to="/menu" className='nav-link'> Menu</Link>
+                                
                             </NavItem>
                 </div>
                     

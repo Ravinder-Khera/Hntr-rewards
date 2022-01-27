@@ -1,9 +1,12 @@
-import { Button, InputGroupText } from 'reactstrap';
+import { InputGroupText } from 'reactstrap';
 import { CardGroup, Card, CardBody, CardTitle, CardText  } from 'reactstrap';
 import React from 'react';
 import logo from '../../../assets/logo.png';
 import harvest from '../../../assets/harvest-icon.png';
 import './pools.css'
+
+import { Link } from 'react-router-dom';
+
 
 import {
     Input,
@@ -42,16 +45,14 @@ export default function Home() {
               <CardText>
               Earn HNTR
               </CardText>
-              <Button className='token-btn'>
-                Select
-              </Button>
 
-            
+              <Link to="/pool" className='select-crop'> Select</Link>
 
-            <InputGroup>
-            <Input type='text' readOnly = {true} name="input" id="input" placeholder="EROI" />
-            <InputGroupText>80%</InputGroupText>
-            </InputGroup>
+              
+                <InputGroup>
+                    <Input type='text' className='readonly-input' readOnly = {true} name="input" id="input" placeholder="EROI" />
+                    <InputGroupText>80%</InputGroupText>
+                </InputGroup>
             </CardBody>
           </Card>
           

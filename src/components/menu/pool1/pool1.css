@@ -1,0 +1,137 @@
+.approve-lp{
+    font-size: 14px;
+    color: rgb(109, 108, 108);
+    margin: auto;
+    flex-wrap: nowrap !important;
+}
+
+.pool1-card{
+    padding: 5px 30px;
+    min-width: 50px;
+    border-bottom: none;
+}
+
+.poolpopup-box {
+    position: fixed;
+    background: #000000c7;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 3;
+  }
+
+  @media screen and (max-width:992px) {
+      .pool-box{
+          width: 70% !important;
+      }
+      .close-icon{
+        right: calc(15% - 30px) !important;
+      }
+  }
+
+   
+  .pool-box {
+    position: relative;
+    width: 50%;
+    max-width: 645px;
+    margin: 0 auto;
+    height: auto;
+    max-height: 70vh;
+    margin-top: calc(111vh - 85vh - 20px);
+    background: #fff;
+    border-radius: 4px;
+    padding: 20px;
+    border: 1px solid #999;
+    overflow: auto;
+  }
+
+  .close-popup{
+        position: absolute;
+        top: 1%;
+        right: 1%;
+        content: 'x';
+        cursor: pointer;
+        background: #ededed;
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        line-height: 20px;
+        text-align: center;
+        border: 1px solid #999;
+        font-size: 20px;
+  }
+
+.deposit-lp{
+    margin: auto;
+    padding-bottom: 5px;
+    background-color: transparent !important;
+    color: #000 !important;
+    border: 2px solid !important;
+    border-color: transparent !important;
+    width: 90%;
+}
+
+.withdrwa-lp{
+    margin: auto;
+    padding-bottom: 5px;
+    background-color: transparent !important;
+    color: #000 !important;
+    border: 2px solid !important;
+    border-color: transparent !important;
+}
+
+.deposit-lp:hover{
+    border: 2px solid #ef981d !important;
+}
+
+.withdrwa-lp:hover{
+    border: 2px solid #ef981d !important;
+}
+
+.harvest-heading{
+    padding: 1rem;
+}
+
+.input-harvest{
+    padding: 1rem;
+}
+
+.HNTR-LP{
+    margin: auto;
+}
+
+.available-HNTR{
+    color: #ef981d;
+}
+
+.input-max{
+    color: #1E2731 !important;
+    border: none !important;
+    border-radius: 0.25rem !important;
+    background-color: #ef981d !important;
+    font-weight: bold;
+}
+
+.input-max:active{
+    color: #fff !important;
+    border: none !important;
+    border-radius: 0.25rem !important;
+    background-color: #ef981d !important;
+}
+
+.input-confirm:active{
+  color: #ef981d !important;
+  border-color: #ef981d !important;
+  border: 2px solid !important;
+  border-radius: 2px !important;
+  background-color: #1E2731 ;
+}
+
+.input-confirm:enabled{
+  color: #ef981d !important;
+  border-color: #ef981d !important;
+  border: 2px solid !important;
+  border-radius: 0.25rem !important;
+  background-color: transparent !important;
+}
