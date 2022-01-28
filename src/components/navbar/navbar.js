@@ -16,12 +16,18 @@ import { Link } from 'react-router-dom';
 
 export default function Headerbar() {
 
+  let [isPopup, setIsPopup] = useState(false);
+  const togglePopup = () => {
+    setIsPopup(!isPopup);
+  }
+
   const { authenticate, isAuthenticated,user, logout } = useMoralis();
 
   let userAddress;
   if (isAuthenticated) {
-    console.log(user);
+    console.log(user.attributes.accounts[0]);
      userAddress = user.attributes.accounts[0] ;
+      isPopup= false;
   }
 
 
@@ -41,10 +47,7 @@ export default function Headerbar() {
   //   console.log(accounts);
   // }
 
-  const [isPopup, setIsPopup] = useState(false);
-  const togglePopup = () => {
-    setIsPopup(!isPopup);
-  }
+  
 
   const [isOpen, setIsOpen] = useState(false);
 
@@ -62,64 +65,54 @@ export default function Headerbar() {
               <img className='img-fluid' src={ logo } alt=""/>$ HNTR
             </div>
             </NavbarBrand>
-            <div className='order-md-2'>
-            {isAuthenticated ? (
-              
-            <Button 
-            onClick={togglePopup} > 
-            Connected 
-            </Button>
-        
-          ) : (
-                    <Button
-                    color="light"
-                    className='nav-btn'
-                    onClick={togglePopup}
-                    >
-                    Connect
-                   </Button>
-          )}
+            <div className='order-md-2 connect-btn-div'>
+                {isAuthenticated ? (
+                  
+                <div className='d-flex connected-div'> 
+                  <Button 
+                        className='connected-to-btn' > 
+                        <h6 className='connected-to-heading'>Connected to</h6>
+                    <p className='mb-0'>{ userAddress.substring(0,5)+"..."+ userAddress.slice(-5) }</p> 
+                  </Button>
 
-                   {isPopup && <Popup
-                          content={<>
+                <Button className='log-out-btn' onClick={ disconnect }>Logout</Button>
+              </div>            
+            
+              ) : (
+                        <Button
+                        color="light"
+                        className='nav-btn connect-btn'
+                        onClick={togglePopup}
+                        >
+                        Connect
+                      </Button>
+              )}
 
-                              
-                              
-                              { !isAuthenticated ? (
-                                <div>
-                                  <Button
-                                    color="light"
-                                    className='nav-btn'
-                                    onClick={() => authenticate()}
-                                    >
-                                    Meta Mask
+                      {isPopup && <Popup
+                              content={<>
+                                    <div>
+                                      <Button
+                                        color="light"
+                                        className='nav-btn'
+                                        onClick={() => authenticate()}
+                                        >
+                                        Meta Mask
+                                      </Button>
+
+                                      <Button
+                                      color="light"
+                                      className='nav-btn'
+                                      onClick={() => authenticate({ provider: "walletconnect" })}
+                                      >
+                                      wallet connect
                                   </Button>
+                                  </div>
 
-                                  <Button
-                                  color="light"
-                                  className='nav-btn'
-                                  onClick={() => authenticate({ provider: "walletconnect" })}
-                                  >
-                                  wallet connect
-                              </Button>
-                              </div>
-
-                              ) : (
-
-                                <div className='m-3 wrap'> 
-                                <h5>Welcome { userAddress }</h5>
-                                <Button onClick={ disconnect }>Logout</Button>
-                              </div>
-
-                              
-
-                              )}
-                           
-                          </>}
-                          handleClose={togglePopup}
-                        />}
+                              </>}
+                              handleClose={togglePopup}
+                            />}
                    
-             </div>
+            </div>
         
             <NavbarToggler onClick={() => { setIsOpen(!isOpen) }} />
                 <Collapse isOpen={isOpen}    navbar>
@@ -129,6 +122,10 @@ export default function Headerbar() {
                                 
                                 <Link to="/" className='nav-link'> Home</Link>
                                 <Link to="/menu" className='nav-link'> Menu</Link>
+                                
+                                {isAuthenticated  &&
+                                <Button className='collapse-logout' onClick={ disconnect }>Logout</Button>
+                                }
                                 
                             </NavItem>
                 </div>

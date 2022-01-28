@@ -63,8 +63,14 @@ body, html {
   .home-menu{
     display: flex;
     max-height: 100px;
+    
   }
+  .collapse-logout{
+   display: none !important; 
+  }
+
   .navbar-expand-md .navbar-collapse {
+    top: 0;
     justify-content: center;
   }
   .nav-link{
@@ -121,6 +127,9 @@ body, html {
   .content-div{
     margin-top: 5rem;
   }
+  .container-fluid{
+    flex-wrap: nowrap !important;
+  }
 }
 @media screen and (max-width:576px){
   .content-div{
@@ -128,9 +137,21 @@ body, html {
   }
 }
 
+.brand-nav{
+  z-index: 3;
+}
+
+.connect-btn-div{
+  z-index: 3 !important;
+}
+
 .navbar-collapse{
   background-color: #1E2731;
-    z-index: 1;
+    z-index: 2;
+    position: fixed;
+    top: 110px;
+    width: 50%;
+    left: 25%;
 }
 
 .content-container{
@@ -201,4 +222,25 @@ body, html {
   text-align: center;
   border: 1px solid #999;
   font-size: 20px;
+}
+
+.log-out-btn{
+  height: fit-content;
+  margin: auto;
+}
+@media screen and (max-width:767px) {
+    .log-out-btn{
+      display: none !important;
+    }
+}
+
+.connected-to-heading{
+  color: #fff;
+}
+
+.connected-to-btn{
+  background: transparent !important;
+    border: none !important;
+    color: #ef981d !important;
+    margin-right: 10px;
 }
