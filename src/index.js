@@ -7,8 +7,9 @@ import 'bootstrap/dist/css/bootstrap.css';
 
 import { MoralisProvider } from "react-moralis";
 
-const APP_ID = "2r2c0EVh1fSNnD3BQHNQf38RnrzTARBgBXYK6qkE";
-const SERVER_URL = "https://tnlr0favahzl.usemoralis.com:2053/server";
+const APP_ID = "AciytsfTneYeGa0T50DCtZx8RcKI7jiq7aWbxGgy";
+const SERVER_URL = "https://bxajbu1wkkqt.usemoralis.com:2053/server";
+
 
 ReactDOM.render(
   <React.StrictMode>

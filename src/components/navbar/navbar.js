@@ -1,10 +1,8 @@
-import logo from '../../assets/logo.png';
 import React, { useState } from 'react';
+import logo from '../../assets/logo.png';
 import Popup from './popup';
 
-
 import { useMoralis } from "react-moralis";
-
 import {
   Collapse,
   Navbar,
@@ -14,38 +12,42 @@ import {
   NavItem,
   Button
 } from 'reactstrap';
-
 import { Link } from 'react-router-dom';
-
-
 
 export default function Headerbar() {
 
   const { authenticate, isAuthenticated,user, logout } = useMoralis();
+
+  let userAddress;
+  if (isAuthenticated) {
+    console.log(user);
+     userAddress = user.attributes.accounts[0] ;
+  }
+
+
+  let disconnect = async () => {
+    logout()
+    console.log("log out");
+  } 
+
+
+  // let accounts;
+  // const connect = async () => {  
+  //   accounts = await window.ethereum.request({ 
+  //     method: 'eth_requestAccounts' 
+  //       }).catch((err)=> {
+  //         console.log(err.code)
+  //         })
+  //   console.log(accounts);
+  // }
 
   const [isPopup, setIsPopup] = useState(false);
   const togglePopup = () => {
     setIsPopup(!isPopup);
   }
 
-  let userAddress;
-  if (isAuthenticated) {
-     console.log(user.attributes.accounts[0]);
-     userAddress = user.attributes.accounts[0] ;
-  }
+  const [isOpen, setIsOpen] = useState(false);
 
-  let accounts;
-  const connect = async () => {
-    
-    accounts = await window.ethereum.request({ 
-      method: 'eth_requestAccounts' 
-        }).catch((err)=> {
-          console.log(err.code)
-          })
-    console.log(accounts);
-    
-  }
-    const [isOpen, setIsOpen] = useState(false);
     return (
         <div className='header'>
         <div className='nav-container'>
@@ -81,28 +83,36 @@ export default function Headerbar() {
                    {isPopup && <Popup
                           content={<>
 
-                              <Button
-                                  color="light"
-                                  className='nav-btn'
-                                  onClick={() => authenticate({ connect })}
-                                  >
-                                  Meta Mask
-                              </Button>
                               
-                              {isAuthenticated ? (
+                              
+                              { !isAuthenticated ? (
                                 <div>
-                                <h5>Welcome { userAddress }</h5>
-                                <Button onClick={() => logout()}>Logout</Button>
-                              </div>
+                                  <Button
+                                    color="light"
+                                    className='nav-btn'
+                                    onClick={() => authenticate()}
+                                    >
+                                    Meta Mask
+                                  </Button>
 
-                              ) : (
-                              <Button
+                                  <Button
                                   color="light"
                                   className='nav-btn'
                                   onClick={() => authenticate({ provider: "walletconnect" })}
                                   >
                                   wallet connect
                               </Button>
+                              </div>
+
+                              ) : (
+
+                                <div className='m-3 wrap'> 
+                                <h5>Welcome { userAddress }</h5>
+                                <Button onClick={ disconnect }>Logout</Button>
+                              </div>
+
+                              
+
                               )}
                            
                           </>}
