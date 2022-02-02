@@ -14,8 +14,8 @@ export default function Home() {
                       <div>
                         <img src={ logo } alt=""/>
                       </div>
-                        <h2 className='content-h2'>HNTR Token Rewarding is Ready</h2>
-                        <p className='content-p'>Stake --- tokens to claim the future of HNTR!</p>
+                        <h2 className='content-h2'>Claim Tokens </h2>
+                        <p className='content-p'> Tokens Released As Per Vesting Schedule</p>
                   </div>
               </div>
 {/* ---------------  cards  -------------------- */}
